@@ -88,7 +88,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="kZK-lt-Bz2">
                                 <rect key="frame" x="87" y="346" width="240" height="204.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="flE-uC-jM7">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AUD" translatesAutoresizingMaskIntoConstraints="NO" id="flE-uC-jM7">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="Fqq-TK-m3j"/>
@@ -120,7 +120,9 @@
                     <connections>
                         <outlet property="bitcoinLabel" destination="N2a-Ax-iRV" id="lWr-Xc-lzH"/>
                         <outlet property="currencyLabel" destination="MAn-y0-nXv" id="78o-VB-OWR"/>
+                        <outlet property="currencyNameLabel" destination="hor-1e-0ED" id="0S3-wG-nZX"/>
                         <outlet property="currencyPicker" destination="ct2-jk-pgH" id="dh2-M9-mFd"/>
+                        <outlet property="natinalFragImageView" destination="flE-uC-jM7" id="HTA-pV-dP9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -129,6 +131,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AUD" width="600" height="400"/>
         <image name="bitcoinsign.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Background Color">
             <color red="0.50599998235702515" green="0.92500001192092896" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

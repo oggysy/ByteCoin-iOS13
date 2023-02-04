@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var bitcoinLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
+    @IBOutlet weak var natinalFragImageView: UIImageView!
+    @IBOutlet weak var currencyNameLabel: UILabel!
     
     var coinManager = CoinManager()
     
@@ -58,6 +60,8 @@ extension ViewController: CoinManagerDelegate {
         DispatchQueue.main.async {
             self.bitcoinLabel.text = bitcoin.rateString
             self.currencyLabel.text = bitcoin.currency
+            self.natinalFragImageView.image = UIImage(named: bitcoin.currency)
+            self.currencyNameLabel.text = bitcoin.currencyName
         }
     }
 }
