@@ -13,30 +13,27 @@ protocol CoinManagerDelegate {
     func didFailWithError(error: Error)
 }
 
-struct CoinManager {
+class CoinManager {
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey = ""
-    let currencyArray = ["AUD", "CAD","CNY","JPY"]
+    let currencyArray = ["AUD","CAD","CNY","JPY"]
     
     var delegate: ViewController?
     
     func getCoinPrice(for currency: String) {
         let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey)"
-        performRequest(with: urlString)
-    }
-    
-    func performRequest(with urlString: String) {
-        guard let url = URL(string: urlString) else { return}
+        
+        guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, request, error in
-            guard error == nil else {
-                delegate?.didFailWithError(error: error!)
+            if let error = error {
+                self.delegate?.didFailWithError(error: error)
                 return
+            } else {
+                guard let safeData = data, let bitcoinData = self.parseJSON(safeData) else { return }
+                self.delegate?.didUpdateBitcoin(self, bitcoin: bitcoinData)
             }
-            guard let safeData = data else { return }
-            guard let bitcoinData = parseJSON(safeData) else { return }
-            delegate?.didUpdateBitcoin(self, bitcoin: bitcoinData)
         }
         task.resume()
     }
